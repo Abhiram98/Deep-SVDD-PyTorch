@@ -67,7 +67,10 @@ We currently have implemented the MNIST ([http://yann.lecun.com/exdb/mnist/](htt
 CIFAR-10 ([https://www.cs.toronto.edu/~kriz/cifar.html](https://www.cs.toronto.edu/~kriz/cifar.html)) datasets and 
 simple LeNet-type networks.
 
+Custom datasets also implemented
+
 Have a look into `main.py` for all possible arguments and options.
+python main.py --help
 
 ### MNIST example
 ```
@@ -106,6 +109,27 @@ python main.py cifar10 cifar10_LeNet ../log/cifar10_test ../data --objective one
 ```
 This example trains a One-Class Deep SVDD model where cats (`--normal_class 3`) is considered to be the normal class. 
 Autoencoder pretraining is used for parameter initialization.
+
+
+### Custom example
+```
+cd <path-to-Deep-SVDD-PyTorch-directory>
+
+# activate virtual environment
+source myenv/bin/activate  # or 'source activate myenv' for conda
+
+# create folder for experimental output
+mkdir log/<custom-folder-name>
+
+# change to source directory
+cd src
+
+# run experiment
+python main.py custom-data custom-network ../log/<custom-folder-name> <path-to-data> --pretrain True --normal_class <normal-class-label>;
+```
+This example trains a One-Class Deep SVDD model where <normal-class-label> is considered to be the normal class. 
+Autoencoder pretraining is used for parameter initialization.
+
 
 
 ## Examples
